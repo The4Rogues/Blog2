@@ -1,4 +1,3 @@
-
 <?php
 /* 
  * (controller may contribute or request specific tag)
@@ -8,6 +7,10 @@
  <section>
 <?php // loop start here ?>
      <div>
+         <!--
+         image will be here by controller 
+         <img src="smiley.gif" alt="Smiley face" width="200" height="100">
+         -->
          <p>post title would be here with href to click to read 
      
          <?php // here is php code for showing button only to owner 

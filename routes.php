@@ -1,11 +1,8 @@
 <?php
-
 /*
- *  copied from Peter's routes.php
- *  $controllers array is Work In Progress
+ *  base on Peter's routes.php
+ *  
  */
-
-
 
   function call($controller, $action) {
     // require the file that matches the controller name
@@ -36,7 +33,7 @@ $controllers = array('pages' => ['home', 'error'],
                     'blog' => ['viewAll','show','create','update','delete'],
                     'post' => ['viewAll','show','create','update','delete'],
                     'comment' => ['viewAll','show','create','update','delete'],
-                    'user' => ['login','register','show','update','delete']   
+                    'user' => ['login','register','show','update','delete','logout']   
                     );
 
   // check that the requested controller and action are both allowed

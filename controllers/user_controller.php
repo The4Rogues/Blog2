@@ -6,7 +6,6 @@
  * 
  */
 
-
 class UserController {
     
     /*
@@ -20,7 +19,8 @@ class UserController {
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
               require_once('views/users/login.php');
             }
-        else {     
+        else {  
+            // this try and catch does not work
             try{
                 // if  username and password matched, it will return user_id
                 $user = User::login();
@@ -34,8 +34,7 @@ class UserController {
             catch (Exception $ex){
                 return call('pages','error');
             }
-        } 
-          
+        }           
     }
     
     
@@ -47,8 +46,7 @@ class UserController {
      */
     public function show(){
 
-        try{
-            
+        try{     
             $user_id = $_SESSION['user_id'];
             $user = User::find($user_id);
             // show with edit and delete button
@@ -105,8 +103,7 @@ class UserController {
           // how can i see the owner of the blog
             $user_id=$_SESSION['user_id'];
             try{
-                $user = User::update($user_id);
-                        
+                $user = User::update($user_id);                    
                 return call('user', 'show');
             }
             catch (Exception $ex){
@@ -124,10 +121,9 @@ class UserController {
      * we expect a url of link from show page - leave for now
      */
     public function delete() {
-        //$user_admin = User::find($_SESSION['user_id']);
-        //If ($_SESSION['user_id'] || $user_admin->admin_level' == '1']){
+        
             try{
-                Product::remove($_SESSION['user_id']);
+                User::remove($_SESSION['user_id']);
                 //$_SESSION['user_id'] = '';
                 //$_SESSION['username'] = '';
                 //$_SESSION['logged_in'] = False;
@@ -137,7 +133,11 @@ class UserController {
             }
             catch (Exception $ex){
                 return call('pages','error');
-            }      
-        //}
+            }          
+    }
+    
+    public function logout(){
+        session_unset();
+        return call ('blog', 'viewAll');
     }
 }

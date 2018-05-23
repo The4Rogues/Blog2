@@ -4,7 +4,7 @@
  * indivisual post - comment comes within 
  */
 ?>
- <secion>
+ <section>
      <div>
          <?php // replace comments within p tag with php out put?>
          <p>post title here</p>
@@ -15,4 +15,4 @@
           <div>
          <p>create or update date</p>
      </div>     
- </secion>
+ </section>

@@ -5,7 +5,7 @@
  * all list of post
  */
 ?>
- <secion>
+ <section>
 <?php // loop start here ?>
      <div>
          <p>post title would be here with href to click to read 
@@ -18,4 +18,4 @@
      <span><a href="?controller=post&action=register" >Delete Post</a></span>
      </p>
      </div>
- </secion>
+ </section>

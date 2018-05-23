@@ -45,12 +45,14 @@ $name= '';
     <?php require_once('routes.php'); ?>
 <div>
 <div class="w3-container w3-gray">
+    
     <footer >
         
         For support contact us at support@BlogsAreUs.com <br>
          Created by The6Rogues &COPY; <?= date('Y'); ?>
      <!--   Copyright &COPY; <?= date('Y'); ?> -->
     </footer>
+    
 </div>
   </body>
 </html>

@@ -29,17 +29,15 @@
             <p>Choose a password: <input type="password" name="password" placeholder="Choose a Password" required/></p>
             <p>Repeat Password: <input type="password" name="password-repeat" placeholder="Repeat Password" required/></p>  
                
-          <!--  <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me  -->
-
     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>   
      
-   <input type="submit" value = "submit" href="?controller=user&action=register" />
+   <input type="submit" value = "Submit" href="?controller=user&action=register" />
    <input type="button" value="Cancel" onclick="window.location.href = 'views/pages/home.php'"/>
 
             
     </body>
     <?PHP
-     print_r($_POST);
+    // print_r($_POST);
     
     ?>
 </html>

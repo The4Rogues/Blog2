@@ -3,7 +3,7 @@
 // it should be called on indivisual post - show_post
 ?>
 
-<secion>
+<section>
     <?php // loop start here ?>
      <div>
          <p>comment here    
@@ -12,5 +12,5 @@
         </p>
         <a class = "button" href="?controller=comment&action=create" >Create Comment</a>
      </div>
- </secion>
+ </section>
 

@@ -1,9 +1,10 @@
 
 <section>
-    <p> Viewing a Blog (test)</p>
+    <h1> Viewing a Blog (test)</h1>
 
     <div>
-        <p> Title: <?= $blog->blog_title; ?></p>   
+        <p> Title: <?= $blog->blog_title; ?></p>
+        <p> Date: <?= $blog->date_created; ?></p>
         <p>Summary: <?= $blog ->blog_summary; ?></p>
     </div>
     <div>

@@ -27,8 +27,10 @@
     <h3>Enjoy Writing you post!</h3>
         <form action="" method="post" >
         
+        <p> Post Title </p>
         <p><textarea class="post_title" name = "post_title" rows="1" cols="60" placeholder="Write your title here">
             </textarea></p>
+         <p> Story </p>    
         <p><textarea class="post_body" name = "post_body" rows="15" cols="80" placeholder="Write your Story here">
             </textarea></p>
         

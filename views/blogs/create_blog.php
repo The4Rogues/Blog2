@@ -1,4 +1,76 @@
-<!DOCTYPE html>
+<?php
+
+/* 
+ * ready for test
+ * form to create a blog
+ *  original styling is at the bottom to keep for further use
+ */
+?>
+<style>
+    .blog_body  { 
+       font-size: 20px;
+       margin: 5px;
+    }
+    .blog_title{
+      font-size: 20px;
+       margin: 5px;
+    }
+    .topic{
+      font-size: 20px;
+       margin: 5px;
+    }
+</style>
+
+<section>
+<h1>Create Your Blog</h1>
+        
+    <h3>Enjoy writing you blog!</h3>
+        <form action="" method="post" >
+        
+            <p>Blog Title</p>
+            <textarea class="blog_title" name = "blog_title" rows="1" cols="60" placeholder="Write your title here" required>
+                </textarea>
+
+            <p>Topic</p>
+            <textarea class="topic" name = "topic" rows="1" cols="60" placeholder="Write your blog topic here" required>
+                </textarea>
+
+            <p>Summary</p>
+            <textarea class="blog_body" name = "blog_summary" rows="15" cols="80" placeholder="What is your blog about?" required>
+                </textarea>
+
+            <input type="submit" name="update" href="?controller=blog&action=create" />
+            <a c href="?controller=blog&action=viewAll">Cancel</a>
+        </form>            
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,29 +159,14 @@ body {
 <p><textarea rows="20" cols="131" autofocus placeholder="Write your summary here - Capture your audience and tell them what your blog is about">
 </textarea></p>
 
-        
-    <!--  <h2>Write your blog summary here</h2>
-      <h2>Capture your audience and tell them what your blog is about</h2>
-     <!-- <h5>Title description, May 20, 2018</h5> -->
-     
-   <!--   <p>Some text..</p>
-      <p>Write something interesting here..........</p> -->
     </div> 
     <div class="fakeimg" style="height:200px;">Optional Image</div>
     
     <br>
-    <br>
-    
-   <!-- This button needs to be more centered and bigger -->
+    <br>  
+ 
     <input type="submit" value="Create Blog" />
-    
-   <!-- <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, April 29, 2018</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
-      <p>blah blah blah my blog is about blah blah blah.</p>
-    </div> -->
+
   </div>
   <div class="rightcolumn">
     <div class="card">
@@ -117,29 +174,15 @@ body {
       <div class="fakeimg" style="height:100px;">Image</div>
       <p>Some text about me..</p>
     </div>
-      
-       
-   <!-- <div class="card">
-      <h3>Popular Post</h3>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div><br>
-      <div class="fakeimg">Image</div>
-    </div> -->
+
     <div class="card">
       <h3>Follow Me</h3>
       <p>Some text..</p>
     </div>
   </div>
 </div>
-<!--
-<div class="footer">
-    <footer>  
-         For support contact us at support@BlogsAreUs.com <br>
-         Created by The6Rogues &COPY; <?= date('Y'); ?>
-        </footer> 
-</div> -->
 
 </body>
 </html>
 
-
+--!>

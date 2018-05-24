@@ -13,18 +13,8 @@
 </style>
 
 <!-- what is the purpose of the script? -->
-<script>
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-</script>
-<section>
-    
+
+<section>    
     <h1>BlogsAreUs</h1>  
     <div id="home-page-wrapper">
         <div id="hp-child1-wrapper">
@@ -40,6 +30,7 @@ function myFunction() {
     <div class="preview" class="clearfix">
 
         <p><?= $blog ->blog_title; ?><p>
+        <p><?= $blog ->topic; ?><p>
         <p><?= $blog ->blog_summary; ?><p>
         <p><?= $blog ->date_created; ?><p>    
 

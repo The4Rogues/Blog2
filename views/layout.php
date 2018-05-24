@@ -17,10 +17,18 @@ $name = $_SESSION['username'];
 <html>
   <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 <link rel="stylesheet" href="views/css/main.css">
 <title>Blog</title>
+<script> <!--not been used: may leave for styling purpose for later -->
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
   </head>
   <body>
     <ul>
@@ -46,6 +54,6 @@ $name = $_SESSION['username'];
      <!--   Copyright &COPY; <?= date('Y'); ?> -->
     </footer>
     
-</div>
+
   </body>
 </html>

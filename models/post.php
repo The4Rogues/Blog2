@@ -21,13 +21,16 @@ class Post
         $this->updated_at = $updated_at;
     }
 
-    public static function all()
-    {
+    public static function all($blog_id)
+    {    
+        $search = intval($blog_id);
+        
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM POSTS');
+        $req = $db->query("SELECT * FROM POSTS where blog_id = $search");
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $post) {
+           // $blog = Blog::find($post['blog_id']);
             $blog = Blog::find($post['blog_id']);
             $list[] = new Post(
                 $post['id'],

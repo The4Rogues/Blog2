@@ -7,7 +7,8 @@ class PostController {
 
     public function viewAll() {
         // we store all the posts in a variable
-        $posts = Post::all();
+        $posts = Post::all($_GET['blog_id']);
+        //$posts = Post::allByBlog($_GET['blog_id']);
         require_once('views/posts/viewAll_post.php');
     }
 

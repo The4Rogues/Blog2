@@ -74,7 +74,7 @@ class Blog {
         return $id;
     }
 
-    public static function create() {
+    public static function create($user_id) {
         $db = Db::getInstance();
         $req = $db->prepare("Insert into blog(blog_title, topic, blog_summary, style_id) values (:blog_title, :topic, :blog_summary, :style_id)");
         $req->bindParam(':blog_title', $blog_title);

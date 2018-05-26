@@ -23,7 +23,8 @@ class UserController {
             // this try and catch does not work
             try{
                 // if  username and password matched, it will return user_id
-                $user = User::login();
+                $user_id = User::login();
+                $user = User::find($user_id);
                 
                 $_SESSION['user_id']=$user->id;
                 $_SESSION['username']=$user->username;

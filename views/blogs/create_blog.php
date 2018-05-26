@@ -39,8 +39,8 @@
             <textarea class="blog_body" name = "blog_summary" rows="15" cols="80" placeholder="What is your blog about?" required>
                 </textarea>
 
-            <input type="submit" name="update" href="?controller=blog&action=create" />
-            <a c href="?controller=blog&action=viewAll">Cancel</a>
+            <input type="submit" name="update" href="?controller=blog&action=create" value="Submit" />
+            <input type="button" href="?controller=blog&action=viewAll" value="Cancel" />
         </form>            
 </section>
 

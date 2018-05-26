@@ -1,5 +1,7 @@
 <?php
 
+/* work in progress. All functions complete except login function. Currently fixing login(). */
+
 class User {
 
     public $id;
@@ -53,7 +55,7 @@ class User {
             $filteredEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         $username = $filteredUsername;
-        $password = $filteredPassword;
+        $password = password_hash($filteredPassword, PASSWORD_DEFAULT);
         $first_name = $filteredFirst_name;
         $last_name = $filteredLast_name;
         $email = $filteredEmail;
@@ -84,7 +86,7 @@ class User {
         if (isset($_POST['email']) && $_POST['email'] != "") {
             $filteredEmail = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-        $password = $filteredPassword;
+        $password = password_hash($filteredPassword, PASSWORD_DEFAULT);
         $first_name = $filteredFirst_name;
         $last_name = $filteredLast_name;
         $email = $filteredEmail;
@@ -112,8 +114,28 @@ class User {
         }
     }
     
-    
+    public static function login() {
+        $db = Db::getInstance();
+        $input_password = $_POST['password'];
         
+        $result = $db->query('SELECT * FROM USERS WHERE username = :username LIMIT 1');  
+        $row_cnt = $result->num_rows;        
+        if ($row_cnt > 0) {
+            $req = $db->prepare('SELECT id, password FROM USERS where username = :username');
+            $req->bindParam('id', $user_id);
+            $req->bindParam('password', $password);
+            //foreach ($req->fetch() as $user) {
+            //    $user_id = new User($user['id']);
+            //    $password = new User($user['password']);
+            //}
+            if (password_verify($input_password, $password)) {
+                return $user_id;
+            } else {
+                throw new Exception('Incorrect password entered');
+            }
+        } else {
+            throw new Exception('Username does not exist');
+        }
+    }
     
-
 }

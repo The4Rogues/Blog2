@@ -36,6 +36,7 @@ and open the template in the editor.
         
         if(!empty($_POST)){
             $_SESSION["username"] = $_POST['username'];
+            $_SESSION["password"] = $_POST['password'];
             
             echo '<br>';
             

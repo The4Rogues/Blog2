@@ -18,11 +18,10 @@
     <h1>BlogsAreUs</h1>  
     <div id="home-page-wrapper">
         <div id="hp-child1-wrapper">
-            <p>your voice, your story,</p>
-            <p>your idea's, your blog</p>
+            <p>Your voice, your story, your blog!</p>
         </div>
         <div id = "hp-child2-wrapper">    
-            <p>Create an online presence that is truly yours, and share it with the world</p>
+            <p>Create an online presence that is truly yours and share it with the world.</p>
         </div>
     </div>
 

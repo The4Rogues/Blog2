@@ -115,20 +115,23 @@ class Post
         }
     }
 
+    const AllowedTypes = ['image/jpeg', 'image/jpg'];
+    const InputKey = 'myUploader';
+
     public static function add($blogId)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into POSTS (blog_id, post_title, post_body, created_at,
-            updates_at) values (:blog_id, :image_id :post_title, :post_body, now(), now())");
+        $req = $db->prepare("Insert into POSTS (blog_id, post_title, post_body, created_at)"
+                . " values (:blog_id, :post_title, :post_body, now())");
         $req->bindparam(':blog_id', $blogId);
         $req->bindParam(':post_title', $postTitle);
         $req->bindParam(':post_body', $postBody);
         // set parameters and execute
         if (isset($_POST['post_title']) && $_POST['post_title'] != "") {
-            $filteredName = filter_input(INPUT_POST, 'post_title', FILTER_SANITIZE_SPECIAL_CHARS);
+            $filteredPostTitle = filter_input(INPUT_POST, 'post_title', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if (isset($_POST['post_body']) && $_POST['post_body'] != "") {
-            $filteredPrice = filter_input(INPUT_POST, 'post_body', FILTER_SANITIZE_SPECIAL_CHARS);
+            $filteredPostBody = filter_input(INPUT_POST, 'post_body', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         $postTitle = $filteredPostTitle;
         $postBody = $filteredPostBody;
@@ -138,7 +141,6 @@ class Post
             Image::encodeImage();
         }
     }
-
     public static function remove($id)
     {
         $db = Db::getInstance();

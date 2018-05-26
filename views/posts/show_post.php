@@ -4,19 +4,53 @@
  * indivisual post - comment comes within - viewAll_comment
  */
 ?>
+<style>
+    .post_body  { 
+       font-size: 20px;
+       margin: 5px;
+    }
+    .post_title{
+      font-size: 20px;
+       margin: 5px;
+    }
+    #image_upload{
+        display:block;
+        margin: auto;
+    }
+</style>
+
  <section>
      <div>
-         <?php // replace comments within p tag with php out put?>
-         <p>post title here</p>
+     
+            
+         <p><?php echo $post->post_title ;?></p>
+        
          <!--
          image will be here by controller 
          <img src="smiley.gif" alt="Smiley face" width="200" height="100">
          -->
      </div>
      <div>
-         <p>post body here</p>
+        
+         
+          </textarea></p>
+                
+        <p><textarea class="post_body" name = "post_body" readonly rows="15" cols="80"><?php echo $post->post_body ;?>
+        
+        </textarea></p>
      </div>
           <div>
-         <p>create or update date</p>
+         
+          <p><?php echo 'Date created:' . $post->created_at;?></p>
+          
+          <?php  $date = $post->updated_at ;
+  
+       
+          if ($date > 00000000 ){   ?> 
+              
+        
+                <p><?php echo 'Date last updated:' . $post->updated_at ;?></p>
+                
+          <?php   } ;?>
      </div>     
  </section>

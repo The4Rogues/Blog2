@@ -24,7 +24,7 @@
 <section>
 <h1>Create Post</h1>
         
-    <h3>Enjoy Writing you post!</h3>
+    <h3>Enjoy Writing your post!</h3>
         <form action="" method="post" >
         
         <p> Post Title </p>

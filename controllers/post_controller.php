@@ -33,10 +33,13 @@ class PostController {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             require_once('views/posts/create_post.php');
         } else {
-            Post::add();
-
-            $post = Post::all(); //$post is used within the view
-            require_once('views/posts/viewAll_post.php');
+            
+            //Create post, then display all blog posts 
+            Post::add($_GET['blog_id']);
+            
+              call('blog', 'show'); 
+           //$posts = Post::all($_GET['blog_id']); //$posts is used within the view
+           //require_once('views/posts/viewAll_post.php');
         }
     }
 
@@ -46,24 +49,31 @@ class PostController {
             if (!isset($_GET['post_id']))
                 return call('pages', 'error');
             // we use the given id to get the correct post
-            $product = Post::find($_GET['post_id']);
+            $post = Post::find($_GET['post_id']);
 
             require_once('views/posts/update_post.php');
         }
         else {
             $id = $_GET['post_id'];
             Post::update($id);
+            
+            call('blog', 'viewAll'); 
 
-            $post = Post::all();
-            require_once('views/posts/viewAll_post.php');
+  
+  //require_once('views/blogs/viewAll_blog.php');
+    //require_once('views/layout.php');
+            //$post = Post::all($_GET['blog_id']);
+            //require_once('views/posts/viewAll_post.php');
         }
     }
 
     public function delete() {
         Post::remove($_GET['post_id']);
+        
+         call('blog', 'viewAll'); 
 
-        $post = Post::all();
-        require_once('views/posts/viewAll_post.php');
+        //$posts = Post::all($_GET['blog_id']);
+        //require_once('views/posts/viewAll_post.php');
     }
 
 }

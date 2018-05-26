@@ -40,8 +40,8 @@
                 </textarea>
 
             <input type="submit" name="update" href="?controller=blog&action=create" value="Submit" />
-            <input type="button" href="?controller=blog&action=viewAll" value="Cancel" />
-            <!-- <a href="?controller=blog&action=viewAll">Cancel</a> -->
+            <!-- does not work <input type="button" href="?controller=blog&action=viewAll" value="Cancel" /> -->
+            <a href="?controller=blog&action=viewAll">Cancel</a>
         </form>            
 </section>
 

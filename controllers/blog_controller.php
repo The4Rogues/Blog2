@@ -68,19 +68,19 @@ class BlogController {
     public function create() {
         
       // This privilage has not been set properly if it's set, there would be alternative ways for this condition stateant
-        if(isset($_SESSION['user_id'])){
+        if(!empty($_SESSION['user_id'])){
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
                 require_once('views/blogs/create_blog.php');
             }
             else{ 
-                $blogid = Blog::create();
-                $blogs = Blog::find($blogid);
-                return call('blog', 'viewAll');
+                $blog_id = Blog::create();
+                $blogs = Blog::find($blog_id);
+                return call('blog', 'show');
             }
         }
         else{
             // if not logged in then re-direct to register page (also has link to log in)
-            return call('user', 'register');
+            return call('user', 'login');
         }  
     }
     

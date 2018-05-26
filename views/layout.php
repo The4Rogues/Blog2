@@ -6,10 +6,10 @@
 session_start();
 
 // hard code test for when logged in
+$name= '';
 //$_SESSION['username']='IF';
 //$_SESSION['user_id'] = '9';
-$name= '';
-$name = $_SESSION['username'];
+//$name = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>

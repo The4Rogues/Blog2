@@ -28,7 +28,7 @@ class UserController {
                 
                 $_SESSION['user_id']=$user->id;
                 $_SESSION['username']=$user->username;
-                $_SESSION['logged_in']=True;
+                $_SESSION['admin_level']=$user->admin_level;
                 
                 return call('user', 'show');
             }
@@ -50,7 +50,6 @@ class UserController {
         try{     
             $user_id = $_SESSION['user_id'];
             $user = User::find($user_id);
-            // show with edit and delete button
             
             require_once('views/users/show_user.php');    
         }
@@ -78,7 +77,7 @@ class UserController {
             $user=User::find($userid);
              $_SESSION['user_id']=$user->id;
              $_SESSION['username']=$user->username;
-             $_SESSION['logged_in']=True;
+             $_SESSION['admin_level']=$user->admin_level;
              
             return call("user", "show");
         }  
@@ -99,8 +98,7 @@ class UserController {
             require_once('views/users/update_user.php');
         }
         else
-          { 
-          
+          {           
           // how can i see the owner of the blog
             $user_id=$_SESSION['user_id'];
             try{
@@ -108,9 +106,9 @@ class UserController {
                 return call('user', 'show');
             }
             catch (Exception $ex){
-                return call('pages','error');
+               return call('pages','error');
             }
-      }
+        }
       
     }
     
@@ -121,20 +119,19 @@ class UserController {
      * 
      * we expect a url of link from show page - leave for now
      */
-    public function delete() {
-        
-            try{
-                User::remove($_SESSION['user_id']);
-                //$_SESSION['user_id'] = '';
-                //$_SESSION['username'] = '';
-                //$_SESSION['logged_in'] = False;
-                session_unset();
+    public function delete() {        
+        try{
+            User::remove($_SESSION['user_id']);
+            //$_SESSION['user_id'] = '';
+            //$_SESSION['username'] = '';
+            //$_SESSION['logged_in'] = False;
+            session_unset();
 
-                return call('blog', 'viewAll');    
-            }
-            catch (Exception $ex){
-                return call('pages','error');
-            }          
+            return call('blog', 'viewAll');    
+        }
+        catch (Exception $ex){
+            return call('pages','error');
+        }          
     }
     
     public function logout(){

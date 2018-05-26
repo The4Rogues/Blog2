@@ -67,7 +67,7 @@ class User {
 
     public static function update($id) {
         $db = Db::getInstance();
-        $req = $db->prepare("Update user set password=:password, first_name=:first_name, last_name=:last_name, email=:email where id=:id");
+        $req = $db->prepare("Update USERS set password=:password, first_name=:first_name, last_name=:last_name, email=:email where id=:id");
         $req->bindParam(':id', $id);
         $req->bindParam(':password', $password);
         $req->bindParam(':first_name', $first_name);

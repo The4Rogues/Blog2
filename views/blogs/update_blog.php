@@ -27,16 +27,16 @@
         <form action="" method="post" >
         
             <p>Blog Title</p>
-            <p><textarea class="blog_title" name = "blog_title" rows="1" cols="60" required>
-                </textarea></p>
+            <textarea class="blog_title" name = "blog_title" rows="1" cols="60" required>
+                </textarea>
 
             <p>Topic</p>
-            <p><textarea class="topic" name = "topic" rows="1" cols="60" required>
-                </textarea></p>
+            <textarea class="topic" name = "topic" rows="1" cols="60" required>
+                </textarea>
 
             <p>Summary</p>
-            <p><textarea class="blog_body" name = "blog_summary" rows="15" cols="80" required>
-                </textarea></p>
+            <textarea class="blog_body" name = "blog_summary" rows="15" cols="80" required>
+                </textarea>
 
             <input type="submit" name="update" href="?controller=blog&action=update" />
             <a c href="?controller=blog&action=viewAll">Cancel</a>

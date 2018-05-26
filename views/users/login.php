@@ -20,14 +20,14 @@ and open the template in the editor.
             
             <!-- This all needs to be centered and left aligned, and styled -->
             
-             <h1>Login to BlogsAreUs</h1>
-            
-           <form action="" method="post">
-               Username: <input type="text" name="username" /><br>
-               <br>
-               Password: <input type="password" name="password" /><br>
-               <br>
-            <input type="submit" value="Login" />
+        <h1>Login to BlogsAreUs</h1>
+        <p>So you can create your blog and able to leave your comment! </p>    
+        <form action="" method="post">
+            Username: <input type="text" name="username" /><br>
+            <br>
+            Password: <input type="password" name="password" /><br>
+            <br>
+         <input type="submit" value="Login" />
         </form>
            
         </div>

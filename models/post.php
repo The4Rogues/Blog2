@@ -10,8 +10,9 @@ class Post
     public $post_body;
     public $created_at;
     public $updated_at;
+    public $blog_id;
 
-    public function __construct($id, $blog, $post_title, $post_body, $created_at, $updated_at)
+    public function __construct($id, $blog, $post_title, $post_body, $created_at, $updated_at, $blog_id)
     {
         $this->id = $id;
         $this->blog = $blog;
@@ -19,6 +20,7 @@ class Post
         $this->post_body = $post_body;
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
+        $this->blog_id = $blog_id;
     }
 
     public static function all($blog_id)
@@ -38,7 +40,8 @@ class Post
                 $post['post_title'],
                 $post['post_body'],
                 $post['created_at'],
-                $post['updated_at']
+                $post['updated_at'],
+                $post['blog_id']
             );
         }
         return $list;
@@ -59,7 +62,8 @@ class Post
                 $post['post_title'],
                 $post['post_body'],
                 $post['created_at'],
-                $post['updated_at']
+                $post['updated_at'],
+                $post['blog_id']
             );
         }
         return $list;
@@ -82,7 +86,8 @@ class Post
                 $post['post_title'],
                 $post['post_body'],
                 $post['created_at'],
-                $post['updated_at']);
+                $post['updated_at'],
+                $post['blog_id']);
 
         } else {
             //replace with a more meaningful exception

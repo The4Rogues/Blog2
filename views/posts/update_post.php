@@ -35,7 +35,7 @@
         <input id="image_upload" type="file" name="fileToUpload" id="fileToUpload">
         
         <input type="submit" name="update" href="?controller=post&action=update" />
-        <a href="?controller=blog&action=viewAll">Cancel</a>
+        <a href="?controller=blog&action=show&blog_id=<?= $post->blog_id ?>">Cancel</a>
     </form>
             
 </section>

@@ -16,9 +16,9 @@ class Blog {
         $this->user_id = $user_id;
         $this->blog_title = $blog_title;
         $this->topic = $topic;
-        $this->blog_summary = $blog_summary;
+        $this->blog_summary = $blog_summary;        
         $this->date_created = $date_created;
-        $this->date_edited = $date_edited;
+        $this->date_edited = $date_edited; 
         $this->style_id = $style_id;
     }
 
@@ -73,7 +73,7 @@ class Blog {
         $req->execute();
         return $id;
     }
-
+    /*
     public static function create($user_id) {
         $db = Db::getInstance();
         $req = $db->prepare("Insert into blog(blog_title, topic, blog_summary, style_id) values (:blog_title, :topic, :blog_summary, :style_id)");
@@ -103,7 +103,40 @@ class Blog {
         echo "New record created successfully. Last inserted ID is: " . $last_id;
         return $last_id;
     }
-
+    */
+    
+    public static function create() {
+        $db = Db::getInstance();
+        $req = $db->prepare("INSERT into BLOGS(blog_title, topic, blog_summary, user_id, date_created) values (:blog_title, :topic, :blog_summary, :user_id, :date_created)");
+        $req->bindParam(':blog_title', $blog_title);
+        $req->bindParam(':topic', $topic);
+        $req->bindParam('blog_summary', $blog_summary);
+        $req->bindParam('user_id', $user_id);
+        $req->bindParam('date_created', $date_created);
+        
+        if (isset($_POST['blog_title']) && $_POST['blog_title'] != "") {
+            $filteredBlog_title = filter_input(INPUT_POST, 'blog_title', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['blog_summary']) && $_POST['blog_summary'] != "") {
+            $filteredBlog_summary = filter_input(INPUT_POST, 'blog_summary', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['topic']) && $_POST['topic'] != "") {
+            $filteredTopic = filter_input(INPUT_POST, 'topic', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != "") {
+            $filteredUser_id = filter_var($_SESSION['user_id']);
+        }
+        $blog_title = $filteredBlog_title;
+        $blog_summary = $filteredBlog_summary;
+        $topic = $filteredTopic;
+        $user_id = $filteredUser_id;
+        // need to set time zone....
+        $date_created = date('Y-m-d');
+        $req->execute();  
+        $last_id = $db->lastInsertId();
+        //echo "New record created successfully. Last inserted ID is: " . $last_id;
+        return $last_id;
+    }
     public static function delete($id) {
         $db = Db::getInstance();
         $id = intval($id);

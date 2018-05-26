@@ -6,11 +6,10 @@
 session_start();
 
 // hard code test for when logged in
-//$_SESSION['username']='Edward';
+//$_SESSION['username']='IF';
+//$_SESSION['user_id'] = '9';
 $name= '';
 $name = $_SESSION['username'];
-//$_SESSION['user_id'] = '1';
-
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +53,5 @@ function myFunction() {
      <!--   Copyright &COPY; <?= date('Y'); ?> -->
     </footer>
     
-
   </body>
 </html>

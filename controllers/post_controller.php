@@ -1,8 +1,5 @@
 <?php
 
-/* 
-
- */
 class PostController {
 
     public function viewAll() {
@@ -21,6 +18,9 @@ class PostController {
             // we use the given id to get the correct post
             $post = Post::find($_GET['post_id']);
             require_once('views/posts/show_post.php');
+            
+            call('comment', 'viewAll');
+            
         } catch (Exception $ex) {
             return call('pages', 'error');
         }

@@ -12,16 +12,18 @@ class Comment
     public function __construct($id, $user_id, $comment_body, $created_at)
     {
         $this->id = $id;
-        $this->user_id = $userId;
-        $this->comment_body = $commentBody;
-        $this->Created_at = $createdAt;
+        $this->user_id = $user_id;
+        $this->comment_body = $comment_body;
+        $this->created_at = $created_at;
     }
 
-    public static function all()
+    public static function all($post_id)
     {
+        $search = intval($post_id);
+        
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM COMMENT');
+        $req = $db->query("SELECT * FROM COMMENTS where post_id = $search");
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $comment) {
             $list[] = new Comment($comment['id'], $comment['user_id'], $comment['comment_body'], $comment['created_at']);
@@ -66,9 +68,9 @@ class Comment
     public static function add()
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into COMMENT (user_id, comment_body, created_at,
-            updates_at) values (:user_id, :comment_body, now())");
-        $req->bindParam(':user_id', $userId);
+        $req = $db->prepare("Insert into COMMENTS (post_id, user_id,comment_body, created_at) values (:post_id, :user_id, :comment_body, now())");
+        $req->bindParam(':user_id', $_SESSION['user_id']);
+        $req->bindParam(':post_id', $_GET['post_id']);
         $req->bindParam(':comment_body', $commentBody);
         // set parameters and execute
         if (isset($_POST['comment_body']) && $_POST['comment_body'] != "") {

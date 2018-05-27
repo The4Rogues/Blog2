@@ -43,12 +43,12 @@
          
           <p><?php echo 'Date created:' . $post->created_at;?></p>
           
-          <?php  $date = $post->updated_at ;
+          
+          <?php   //Only show date updated if post has been updated
+          $date = $post->updated_at ;
   
-       
           if ($date > 00000000 ){   ?> 
               
-        
                 <p><?php echo 'Date last updated:' . $post->updated_at ;?></p>
                 
           <?php   } ;?>

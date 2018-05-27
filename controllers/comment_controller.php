@@ -6,7 +6,7 @@
 class CommentController {
     public function viewAll() {
       // we store all the comments in a variable
-      $comments = Comments::all();
+      $comments = Comment::all($_GET['post_id']);
       require_once('views/comments/viewAll_comment.php');
     }
 
@@ -18,7 +18,7 @@ class CommentController {
 
       try{
       // we use the given id to get the correct comment
-      $comments = Comments::find($_GET['comment_id']);
+      $comments = Comment::find($_GET['comment_id']);
       require_once('views/comments/show_comment.php');
       }
  catch (Exception $ex){
@@ -30,13 +30,16 @@ class CommentController {
       // if it's a GET request display a blank form for leaving a new comment
       // else it's a POST so add to the database and redirect to viewAll action
       if($_SERVER['REQUEST_METHOD'] == 'GET'){
+          
           require_once('views/comments/create_comment.php');
       }
       else { 
-            Comments::add();
+          
+            Comment::add();
              
-            $comments = Comments::all(); //$comments is used within the view
+            $comments = Comment::all(); //$comments is used within the view
             require_once('views/comments/viewAll_comment.php');
+            call('post', 'show');
       }
       
     }
@@ -47,7 +50,7 @@ class CommentController {
             return call('pages', 'error');
 
             // we use the given id to get the correct comment
-            $comments = Comments::find($_GET['comment_id']);
+            $comments = Comment::find($_GET['comment_id']);
         
       
             require_once('views/comments/update_comment.php');
@@ -57,7 +60,7 @@ class CommentController {
             $comment_id = $_GET['comment_id'];
             Comments::update($comment_id);
                         
-            $comments = Comments::all();
+            $comments = Comment::all();
             require_once('views/comments/viewAll_comment.php');
       }
       
@@ -65,7 +68,7 @@ class CommentController {
     public function delete() {
             Comments::remove($_GET['comment_id']);
             
-            $comments = Comments::all();
+            $comments = Comment::all();
             require_once('views/comments/viewAll_comment.php');
         }  
     }

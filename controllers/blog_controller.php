@@ -16,11 +16,6 @@ class BlogController {
      */
     public function viewAll() { 
       // we store all the blogs in a variable
-        if (!isset($SESSION)){
-            $_SESSION['username']='';
-            $_SESSION['user_id']='';
-            $_SESSION['is_logged']=FALSE;
-        }
             $blogs = Blog::all();
             
             require_once('views/blogs/viewAll_blog.php');
@@ -45,10 +40,6 @@ class BlogController {
         try{
             // we use the given id to get the correct blog
             $blog = Blog::find($_GET['blog_id']);
-            // preparation of buttons for delete and edit
-            if ($blog->user_id == $_SESSION["user_id"]){
-                $owner_button = TRUE;
-            }
             
             // show_blog.php require viewAll_post.php          
             require_once('views/blogs/show_blog.php');        

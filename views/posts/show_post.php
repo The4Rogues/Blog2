@@ -52,5 +52,6 @@
                 <p><?php echo 'Date last updated:' . $post->updated_at ;?></p>
                 
           <?php   } ;?>
+          <a href='?controller=blog&action=show&blog_id=<?php echo $post->blog_id; ?>'>Back to the Blog Page</a>
      </div>     
  </section>

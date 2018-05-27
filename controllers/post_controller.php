@@ -56,7 +56,7 @@ class PostController {
         else {
             $id = $_GET['post_id'];
             Post::update($id);
-            
+            //call('blog', 'show'); potencially 
             call('blog', 'viewAll'); 
 
   

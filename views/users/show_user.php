@@ -9,7 +9,7 @@
     <div>
         <h2> Your profile </h2>
         <p> First name:<?= $user->first_name; ?></p>
-        <p> Last namme: <?= $user->last_name; ?></p>
+        <p> Last name: <?= $user->last_name; ?></p>
         <p> Your Username: <?= $user->username; ?></p>
         <p> your email: <?= $user->email; ?></p>
         

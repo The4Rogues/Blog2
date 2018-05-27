@@ -11,7 +11,7 @@ class Blog {
     public $date_edited;
     public $style_id;
 
-    public function __construct($id, $user_id, $blog_title, $topic, $blog_summary, $date_created, $date_edited, $style_id) {
+    public function __construct($id, $user_id, $blog_title, $topic, $blog_summary, $date_created, $date_edited, $style_id, $blog_image) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->blog_title = $blog_title;
@@ -20,6 +20,7 @@ class Blog {
         $this->date_created = $date_created;
         $this->date_edited = $date_edited; 
         $this->style_id = $style_id;
+        $this->blog_image = $blog_image;
     }
 
     public static function all() {
@@ -27,7 +28,7 @@ class Blog {
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM BLOGS');
         foreach ($req->fetchAll() as $blog) {
-            $list[] = new Blog($blog['id'], $blog['user_id'], $blog['blog_title'], $blog['topic'], $blog['blog_summary'], $blog['date_created'], $blog['date_edited'], $blog['style_id']);
+            $list[] = new Blog($blog['id'], $blog['user_id'], $blog['blog_title'], $blog['topic'], $blog['blog_summary'], $blog['date_created'], $blog['date_edited'], $blog['style_id'], $blog['blog_image']);
         }
         return $list;
     }
@@ -39,7 +40,7 @@ class Blog {
         $req->execute(array('id' => $id));
         $blog = $req->fetch();
         if ($blog) {
-            return new Blog($blog['id'], $blog['user_id'], $blog['blog_title'], $blog['topic'], $blog['blog_summary'], $blog['date_created'], $blog['date_edited'], $blog['style_id']);
+            return new Blog($blog['id'], $blog['user_id'], $blog['blog_title'], $blog['topic'], $blog['blog_summary'], $blog['date_created'], $blog['date_edited'], $blog['style_id'], $blog['blog_image']);
         } else {
             throw new Exception('Cannot find blog, please try again.');
         }

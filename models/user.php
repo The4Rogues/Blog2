@@ -10,6 +10,7 @@ class User {
     public $first_name;
     public $last_name;
     public $email;
+    public $admin_level;
 
     public function __construct($id, $username, $password, $first_name, $last_name, $email) {
         $this->id = $id;
@@ -18,6 +19,7 @@ class User {
         $this->first_name = $first_name;
         $this->last_name = $last_name;
         $this->email = $email;
+        $this->admin_level = $admin_level;
     }
 
     public static function all() {
@@ -25,7 +27,7 @@ class User {
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM USERS');
         foreach ($req->fetchAll() as $user) {
-            $list[] = new User($user['id'], $user['username'], $user['password'], $user['first_name'], $user['last_name'], $user['email']);
+            $list[] = new User($user['id'], $user['username'], $user['password'], $user['first_name'], $user['last_name'], $user['email'], $user['admin_level']);
         }
         return $list;
     }
@@ -61,7 +63,7 @@ class User {
         $email = $filteredEmail;
         $req->execute();
         $last_id = $db->lastInsertId();
-        echo "New record created successfully. Last inserted ID is: " . $last_id;
+       // echo "New record created successfully. Last inserted ID is: " . $last_id;
         return $last_id;
     }
 
@@ -108,12 +110,45 @@ class User {
         $req->execute(array('id' => $id));
         $user = $req->fetch();
         if ($user) {
-            return new User($user['id'], $user['username'], $user['password'], $user['first_name'], $user['last_name'],$user['email']);
+            return new User($user['id'], $user['username'], $user['password'], $user['first_name'], $user['last_name'], $user['email'], $user['admin_level']);
         } else {
             throw new Exception('Cannot find user, please try again.');
         }
     }
     
+    public static function login() {
+        $db = Db::getInstance();     
+        $req = $db->prepare('SELECT id, password, admin_level FROM USERS where username = :username');
+        $req->bindParam(':username', $username);
+
+        if (isset($_POST['password']) && $_POST['password'] != "") {
+        $filteredPassword = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['username']) && $_POST['username'] != "") {
+        $filteredUsername = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        $input_password = $filteredPassword;
+        $username = $filteredUsername;
+        $req->execute(); 
+        $result = $req->fetch();
+      //  foreach ($result as $user_detail){
+      //      $user_details = new User($user_detail['id'], $user_detail['admin_level']);
+      //  }
+        $row_cnt = $req->rowCount();        
+
+        if ($row_cnt > 0) {
+            if (password_verify($input_password, $result['password'])) {
+               // return $user_details;
+                return $result['id'];
+            } else {
+                throw new Exception('Incorrect password entered');
+            }
+        } else {
+            throw new Exception('Username does not exist');
+        }
+   }
+
+   /*
     public static function login() {
         $db = Db::getInstance();
         $input_password = $_POST['password'];
@@ -137,5 +172,7 @@ class User {
             throw new Exception('Username does not exist');
         }
     }
+    * 
+    */
     
 }

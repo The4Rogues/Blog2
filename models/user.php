@@ -12,7 +12,7 @@ class User {
     public $email;
     public $admin_level;
 
-    public function __construct($id, $username, $password, $first_name, $last_name, $email) {
+    public function __construct($id, $username, $password, $first_name, $last_name, $email, $admin_level) {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;

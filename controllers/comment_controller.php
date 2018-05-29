@@ -25,6 +25,7 @@ class CommentController {
      return call('pages','error');
  }
     }
+ 
     public function create() {
       // we expect a url of form ?controller=comment&action=create
       // if it's a GET request display a blank form for leaving a new comment
@@ -36,9 +37,7 @@ class CommentController {
       else { 
           
             Comment::add();
-             
-            $comments = Comment::all(); //$comments is used within the view
-            require_once('views/comments/viewAll_comment.php');
+         
             call('post', 'show');
       }
       
@@ -65,10 +64,14 @@ class CommentController {
       }
       
     }
-    public function delete() {
-            Comments::remove($_GET['comment_id']);
+  
+    
+     public function delete() {
+        
+        
+            Comment::remove($_GET['comment_id']);
             
-            $comments = Comment::all();
-            require_once('views/comments/viewAll_comment.php');
+             call('post', 'show');
+           
         }  
-    }
+}

@@ -11,6 +11,9 @@
         if(empty($comments)){ 
             echo "Noone has commented on this post yet";}
         else { //loop thru comments to display 
+            
+            $_SESSION['post_id'] = $_GET['post_id'];    //so can return to correct post if comment deleted 
+            
             foreach($comments as $comment) { ?>
     <div>
         <p><?php echo  $comment->created_at.' '.$comment->comment_body ;?>&nbsp; &nbsp;

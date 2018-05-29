@@ -9,9 +9,20 @@ class PostController {
         require_once('views/posts/viewAll_post.php');
     }
 
-    public function show() {
+  
+public function show() {
         // we expect a url of form ?controller=post&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database
+        
+       //If not in URL, then post_id should be passed in SESSION. Clear post_id from SESSION once it's been accessed.
+        
+        if (!isset($_GET['post_id'])){
+            If (isset($_SESSION['post_id'])){
+                $_GET['post_id'] = $_SESSION['post_id'];
+                $_SESSION['post_id'] = NULL;
+            }  
+        }
+        
         if (!isset($_GET['post_id']))
             return call('pages', 'error');
         try {
@@ -25,7 +36,6 @@ class PostController {
             return call('pages', 'error');
         }
     }
-
     public function create() {
         // we expect a url of form ?controller=post&action=create
         // if it's a GET request display a blank form for creating a new post
